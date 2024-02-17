@@ -1,11 +1,13 @@
 import java.io.*;
+import java.util.Collections;
 import java.util.TreeSet;
 
 public class Main {
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static TreeSet<String> ts = new TreeSet<>();
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         String[] a = br.readLine().split(" ");
 
@@ -15,13 +17,10 @@ public class Main {
         findNum(a, b);
     }
     static void findNum(String[] a, String[] b) throws IOException {
-        TreeSet<String> ts = new TreeSet<>();
-        for (String i : a) {
-            ts.add(i);
-        }
+        Collections.addAll(ts, a);
 
-        for (String i : b) {
-            if (ts.contains(i)) {
+        for (String s : b) {
+            if (ts.contains(s)) {
                 bw.write("1\n");
             } else {
                 bw.write("0\n");

@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
@@ -28,20 +29,16 @@ public class Main {
                 arr2[i][j] = Integer.parseInt(st.nextToken());
             }
         }
-        int[][] arr = new int[N][K];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < K; j++) {
+                int sum = 0;
                 for (int k = 0; k < M; k++) {
-                    arr[i][j] += arr1[i][k] * arr2[k][j];
+                    sum += arr1[i][k] * arr2[k][j];
                 }
+                sb.append(sum).append(" ");
             }
+            sb.append("\n");
         }
-
-        for (int[] ints : arr) {
-            for (int anInt : ints) {
-                System.out.print(anInt + " ");
-            }
-            System.out.println();
-        }
+        System.out.println(sb);
     }
 }

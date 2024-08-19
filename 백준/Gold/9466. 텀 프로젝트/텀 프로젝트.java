@@ -22,10 +22,16 @@ public class Main {
 
             for (int i = 1; i <= N; i++) {
                 list[i] = Integer.parseInt(st.nextToken());
+                if (list[i] == i) {
+                    done[i] = true;
+                    cnt++;
+                }
             }
 
             for (int i = 1; i <= N; i++) {
-                dfs(i);
+                if (!done[i]) {
+                    dfs(i);
+                }
             }
 
             System.out.println(N - cnt);

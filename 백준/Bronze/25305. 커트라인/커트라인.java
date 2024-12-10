@@ -1,35 +1,23 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.StringTokenizer;
 
 public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
+        Integer[] arr = new Integer[n];
 
-        int N = scanner.nextInt();
-        int k = scanner.nextInt();
-
-        int[] arr = new int[N];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = scanner.nextInt();
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        sortArr(arr);
-        cutLine(arr, k);
-    }
-
-    static void sortArr(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i; j < arr.length; j++) {
-                if (arr[j] > arr[i]) {
-                    int temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
-        }
-    }
-
-    static void cutLine(int[] arr, int k) {
+        Arrays.sort(arr, Collections.reverseOrder());
         System.out.println(arr[k - 1]);
     }
 }

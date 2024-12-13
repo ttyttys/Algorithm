@@ -1,42 +1,41 @@
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
+
         int n = sc.nextInt();
         int[] stack = new int[n];
         int size = 0;
         while (n-- > 0) {
             String cmd = sc.next();
             if (cmd.equals("push")) {
-                int num = Integer.parseInt(sc.next());
+                int num = sc.nextInt();
                 stack[size++] = num;
-            } else if (cmd.equals("top")) {
-                if (size == 0) {
-                    bw.write("-1\n");
-                } else {
-                    bw.write(stack[size-1]+"\n");
-                }
-            } else if (cmd.equals("size")) {
-                bw.write(size+"\n");
-            } else if (cmd.equals("empty")) {
-                if (size == 0) {
-                    bw.write("1\n");
-                } else {
-                    bw.write("0\n");
-                }
             } else if (cmd.equals("pop")) {
                 if (size == 0) {
-                    bw.write("-1\n");
+                    sb.append("-1\n");
                 } else {
-                    bw.write(stack[size-1]+"\n");
-                    size -= 1;
+                    sb.append(stack[size - 1]).append("\n");
+                    size--;
+                }
+            } else if (cmd.equals("size")) {
+                sb.append(size).append("\n");
+            } else if (cmd.equals("empty")) {
+                if (size == 0) {
+                    sb.append("1\n");
+                } else {
+                    sb.append("0\n");
+                }
+            } else if (cmd.equals("top")) {
+                if (size == 0) {
+                    sb.append("-1\n");
+                } else {
+                    sb.append(stack[size - 1]).append("\n");
                 }
             }
         }
-        bw.flush();
+        System.out.println(sb);
     }
 }
